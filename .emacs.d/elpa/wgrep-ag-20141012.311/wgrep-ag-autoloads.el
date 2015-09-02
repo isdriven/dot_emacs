@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "wgrep-ag" "wgrep-ag.el" (21989 23069 0 0))
+;;;### (autoloads nil "wgrep-ag" "wgrep-ag.el" (21990 39635 0 0))
 ;;; Generated autoloads from wgrep-ag.el
 
 (autoload 'wgrep-ag-setup "wgrep-ag" "\
