@@ -27,8 +27,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; load-path
-(add-to-list 'load-path "~/.emacs.d/async")
-(add-to-list 'load-path "~/.emacs.d/helm")
+;(add-to-list 'load-path "~/.emacs.d/async")
+;(add-to-list 'load-path "~/.emacs.d/helm")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/auto-complete/")
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
@@ -99,6 +99,12 @@
 (helm-mode 1)
 (define-key global-map (kbd "M-y")     'helm-show-kill-ring)
 (define-key global-map (kbd "M-t")     'helm-swoop)
+;; For find-file etc.
+(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+;; For helm-find-files etc.
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+
+
 ;; ag
 (define-key global-map (kbd "M-q")     'ag)
 
@@ -140,6 +146,16 @@
   (c-set-offset 'arglist-cont 0)
   (c-set-offset 'arglist-cont-nonempty 0)
   (c-set-offset 'arglist-close 0))
+
+;; go-mode
+(require 'go-mode-autoloads)
+(add-hook 'go-mode-hook 
+  (lambda ()
+    (setq-default) 
+    (setq tab-width 2) 
+    (setq standard-indent 2) 
+    (setq indent-tabs-mode nil)))
+
 
 ;; PHP-MODE
 (require 'php-mode)
@@ -429,7 +445,6 @@
                     (call-interactively 'ag)
                     (select-window ; select ag buffer
                      (car (my/get-buffer-window-list-regexp "^\\*ag ")))))
-
 
 ;; -- end of emacs --
 
